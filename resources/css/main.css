@@ -1,3 +1,77 @@
-h1{
-    color: rgb(255, 9, 9);
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.hoja {
+    width: 216mm; /* Ancho A4 */
+    min-height: 356mm; /* Alto A4 */
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Para que el padding no aumente el ancho */
+}
+
+.header {
+    display: flex;  /* Usamos display flex en lugar de position: flex */
+    margin: 30px;
+    height: 105px;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1.5px solid #000;
+    padding: 5px;
+}
+
+.company-info {
+    height: 40px;
+    width: 598px;
+    display: flex;
+    font-size: 12px;;
+    margin-right: -11px;
+    margin-left: -560px;
+    margin-top: -5px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding-left: 5px;
+    padding-top: -10px;
+    position: relative; /* Aquí cambiamos a position: relative */
+}
+.company-name{
+    font-size: 25px;
+    position: relative;
+    top: -10px;  /* Ajusta el valor para moverlo hacia arriba */
+}
+
+
+
+.form-title {
+    height: 76px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    border-left: #000 1px solid;
+    position: relative;
+    padding-left: 170px;
+    padding-top: 5px;
+    margin-top: 30px;
+    margin-left: -593px;
+
+}
+
+.posicionimg {
+    display: flex; /* Corregido display en lugar de position */
+    justify-content: left;
+    align-items: flex-start; /* Usar flex-start para alinear bien */
+    margin-right: 645px;
+    margin-left: 20px;
+    padding-bottom: 50px;
+}
+
+.header img {
+    width: 75px;
+    height: auto;
+    position: absolute; /* Esto está bien, se mantiene */
+    align-content: center;
 }
