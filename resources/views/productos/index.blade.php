@@ -9,6 +9,8 @@
     <main>
         <h1>Lista de Productos</h1>
         <a href="/producto/crear">Crear Nuevo Producto</a>
+        <br>
+        
         <ul>
             @foreach($productos as $producto)
                 <li>{{ $producto->nombre }} - ${{ $producto->precio }}</li>
