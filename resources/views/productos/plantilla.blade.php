@@ -17,19 +17,38 @@
 </head>
 <body>
 
-<div class="hoja">
-    @if($modo === 'pdf')
-        <img src="{{ public_path('images/plantilla.png') }}" class="fondo">
-    @else
-        <img src="{{ asset('images/plantilla.png') }}" class="fondo">
-    @endif
+        @if($modo !== 'pdf')
+        <form method="POST" action="{{ route('formulario.pdf') }}">
+        @csrf
+        @endif
 
-    @if($modo === 'pdf')
-        <div class="Purchase_Order_PDF" >{{ $purchase_order ?? '' }}</div>
-    @else
-        <input type="text" class="Purchase_Order" value="{{ $purchase_order ?? '' }}" placeholder="Purchase Order">
-    @endif
-</div>
+        <div class="hoja">
+            @if($modo === 'pdf')
+                <img src="{{ public_path('images/plantilla.png') }}" class="fondo">
+            @else
+                <img src="{{ asset('images/plantilla.png') }}" class="fondo">
+            @endif
+
+            @if($modo === 'pdf')
+                <div class="Purchase_Order_PDF">
+                    {{ $purchase_order ?? '' }}
+                </div>
+            @else
+                <input
+                    type="text"
+                    name="purchase_order"
+                    class="Purchase_Order"
+                    value="{{ old('purchase_order', $purchase_order ?? '') }}"
+                    placeholder="Purchase Order"
+                >
+            @endif
+        </div>
+
+        @if($modo !== 'pdf')
+            <button type="submit" class="Descargar">Descargar PDF</button>
+        </form>
+        @endif
+
 
 </body>
 </html>

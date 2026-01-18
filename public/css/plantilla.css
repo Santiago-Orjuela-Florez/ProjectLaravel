@@ -33,3 +33,19 @@ body {
     font-size: 12pt;
 
 }
+
+.Descargar{
+    position: absolute;
+    top: 20px;
+    margin: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 22px;
+    text-align: center;
+    border-style: hidden;
+    color: white;
+    background-color: rgb(96, 148, 211);
+    font-size: 16px;
+    
+
+}
