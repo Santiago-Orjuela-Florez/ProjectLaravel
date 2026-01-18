@@ -15,6 +15,7 @@ class PdfController extends Controller
         ];
 
         $purchase_order = $request->purchase_order;
+        $material_number = $request->material_number;
 
         $pdf = Pdf::loadView('productos.plantilla', $data)
             ->setPaper('legal', 'portrait')
@@ -26,7 +27,7 @@ class PdfController extends Controller
             'modo' => 'pdf',
             'nombre' => 'PRUEBA PDF',
             'purchase_order' => $purchase_order,
-
+            'material_number' => $material_number,
         ])
             ->setPaper('legal', 'portrait')
             ->download('formulario.pdf');

@@ -34,6 +34,16 @@ body {
 
 }
 
+.Material_Number {
+    position: absolute;
+    top: 59.5mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+    width: 40mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+
+}
 .Descargar{
     position: absolute;
     top: 20px;

@@ -38,6 +38,15 @@ html, body {
     left: 60mm; /* Ajusta esta posición según sea necesario */
    
 }
+.Material_Number_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 60mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+   
+}
 
 *{
 

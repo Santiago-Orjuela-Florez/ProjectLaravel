@@ -42,6 +42,19 @@
                     placeholder="Purchase Order"
                 >
             @endif
+                        @if($modo === 'pdf')
+                <div class="Material_Number_PDF">
+                    {{ $material_number ?? '' }}
+                </div>
+            @else
+                <input
+                    type="text"
+                    name="material_number"
+                    class="Material_Number"
+                    value="{{ old('material_number', $material_number ?? '') }}"
+                    placeholder="Material Number"
+                >
+            @endif
         </div>
 
         @if($modo !== 'pdf')
