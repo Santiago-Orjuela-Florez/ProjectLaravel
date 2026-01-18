@@ -1,0 +1,45 @@
+@page {
+    size: 216mm 356mm; /* Oficio */
+    margin: 0;
+}
+html, body {
+    width: 216mm;   /* Oficio */
+    height: 356mm;
+    margin: 0;
+    padding: 0;
+}
+
+.hoja {
+    position: relative;
+    width: 216mm;   /* Oficio */
+    height: 356mm;
+    overflow: hidden;
+    margin : 0;
+    page-break-after: never;
+    page-break-before: never;
+
+}
+
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 216mm;
+    height: 356mm;
+    display: block;
+}
+
+.Purchase_Order_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 52mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+   
+}
+
+*{
+
+    page-break-inside: never;
+}

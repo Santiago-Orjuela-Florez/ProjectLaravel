@@ -1,0 +1,35 @@
+input,
+.debug-box{
+    border:1 px dashed red;
+    background: rgba(255,0,0,0.05);
+}
+body {
+    background: #ccc;
+}
+
+.hoja {
+    position: relative;
+    width: 216mm;
+    height: 356mm;
+    background: white;
+    margin: 20px auto;
+}
+
+.fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Purchase_Order {
+    position: absolute;
+    top: 51mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+    width: 40mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+
+}
