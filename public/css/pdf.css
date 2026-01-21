@@ -43,9 +43,63 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 60mm; /* Ajusta esta posición según sea necesario */
+    top:    60mm; /* Ajusta esta posición según sea necesario */
     left: 60mm; /* Ajusta esta posición según sea necesario */
    
+}
+
+.EAN_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 68.3mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+   
+}
+
+.Delivery_Date_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 52mm; /* Ajusta esta posición según sea necesario */
+    left: 166mm; /* Ajusta esta posición según sea necesario */
+}
+
+.Batch_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 86mm; /* Ajusta esta posición según sea necesario */
+    left: 166mm; /* Ajusta esta posición según sea necesario */
+}
+
+.Quantity_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 77mm; /* Ajusta esta posición según sea necesario */
+    left: 166mm; /* Ajusta esta posición según sea necesario */
+}
+
+.nombres{
+    position: absolute;
+    top: 96mm; /* Ajusta esta posición según sea necesario */
+    left: 120mm; /* Ajusta esta posición según sea necesario */
+    width: 50mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+}
+
+.desplegable{
+    position: absolute;
+    width: 60mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 16pt;
 }
 
 *{

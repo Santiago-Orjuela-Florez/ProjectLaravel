@@ -2,7 +2,15 @@ input,
 .debug-box{
     border:1 px dashed red;
     background: rgba(255,0,0,0.05);
+
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 body {
     background: #ccc;
 }
@@ -44,6 +52,69 @@ body {
     font-size: 12pt;
 
 }
+
+.EAN {
+    position: absolute;
+    top: 68.3mm; /* Ajusta esta posición según sea necesario */
+    left: 60mm; /* Ajusta esta posición según sea necesario */
+    width: 40mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+
+}
+
+
+
+.Delivery_Date {
+    position: absolute;
+    top: 51mm; /* Ajusta esta posición según sea necesario */
+    left: 165mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ancho más largo para descripción */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Batch {
+    position: absolute;
+    top: 85.5mm; /* Ajusta esta posición según sea necesario */
+    left: 165mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Quantity {
+    position: absolute;
+    top: 76.5mm; /* Ajusta esta posición según sea necesario */
+    left: 165mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.nombres{
+    position: absolute;
+    top: 95.5mm; /* Ajusta esta posición según sea necesario */
+    left: 120mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+}
+
+.desplegable{
+    position: absolute;
+    width: 60mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 14pt;
+}
+
+
+
 .Descargar{
     position: absolute;
     top: 20px;
