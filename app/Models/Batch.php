@@ -10,7 +10,7 @@ class Batch extends Model
     use HasFactory;
     public $timestamps = false;
 
-    protected $fillable = ['batch', 'registro_id', 'quantity'];
+    protected $fillable = ['batch', 'registro_id', 'quantity', 'date'];
 
     public function registro()
     {

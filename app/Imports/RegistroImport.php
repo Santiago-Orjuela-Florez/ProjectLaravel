@@ -17,17 +17,18 @@ class RegistroImport implements ToModel, WithHeadingRow
             'material_document' => $row['material_document'],
         ], [
             'material_description' => $row['material_description'],
+
         ]);
 
-        // Iterar sobre las columnas de batch
-        foreach ($row as $column => $value) {
-            // Si el nombre de la columna comienza con "batch" (ejemplo: "batch1", "batch2", etc.)
-            if (strpos($column, 'batch') !== false && !empty($value)) {
-                Batch::firstOrCreate([
-                    'registro_id' => $registro->id,
-                    'batch' => $value,
-                ]);
-            }
+        // Crear el batch si existe
+        if (!empty($row['batch'])) {
+            Batch::firstOrCreate([
+                'registro_id' => $registro->id,
+                'batch' => $row['batch'],
+            ], [
+                'quantity' => isset($row['qty_in_un_of_entry']) ? (int) $row['qty_in_un_of_entry'] : 0,
+                'date' => isset($row['document_date']) ? \Carbon\Carbon::createFromFormat('d/m/Y', $row['document_date'])->format('Y-m-d') : null,
+            ]);
         }
 
         return $registro;

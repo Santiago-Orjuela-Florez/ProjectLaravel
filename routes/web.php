@@ -11,6 +11,8 @@ Route::get('/', [PlantillaController::class, 'plantilla']);
 Route::post('/pdf', [PdfController::class, 'descargarPdf'])
     ->name('formulario.pdf');
 
+Route::post('/buscar-datos', [PdfController::class, 'buscar'])->name('datos.buscar');
+
 #producto
 Route::get('/productos', [ProductoController::class, 'mostrar']);
 Route::get('/producto/crear', [ProductoController::class, 'create']);

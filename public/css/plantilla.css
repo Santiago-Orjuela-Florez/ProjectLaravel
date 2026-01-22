@@ -112,12 +112,37 @@ body {
     background: transparent;
     font-size: 14pt;
 }
+.batches{
+    position: absolute;
+    top: 212mm; /* Ajusta esta posición según sea necesario */
+    left: 20mm; /* Ajusta esta posición según sea necesario */
+    width: 180mm;
+    height: 20m;
+    /* Ajusta el ancho según sea necesario */
+    border: none;   
+    background: transparent;
+    font-size: 12pt;
+}
 
+.btn-consultar{
+    position: relative;
+    top: -1380px;
+    margin: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 22px;
+    text-align: center;
+    border-style: hidden;
+    color: white;
+    background-color: rgb(96, 148, 211);
+    font-size: 16px;
+    
+}
 
 
 .Descargar{
-    position: absolute;
-    top: 20px;
+    position: relative;
+    top: -1372px;
     margin: 20px;
     width: 150px;
     height: 40px;

@@ -102,6 +102,18 @@ html, body {
     font-size: 16pt;
 }
 
+.batches_PDF {
+    position: absolute;
+    top: 212mm;
+    left: 22mm;
+    width: 180mm;
+    border: none;
+    background: transparent;
+    white-space: normal;
+    word-wrap: break-word;
+    font-size: 12pt;
+    line-height: 1.2;
+}
 *{
 
     page-break-inside: never;

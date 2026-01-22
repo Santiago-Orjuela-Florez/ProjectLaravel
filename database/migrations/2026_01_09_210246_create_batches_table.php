@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('registro_id'); // foreign key al registro
             $table->string('batch')->notNullable();
             $table->integer('quantity')->notNullable();
+            $table->date('date')->notNullable();
 
             $table->foreign('registro_id')->references('id')->on('registros')->onDelete('cascade');
         });
