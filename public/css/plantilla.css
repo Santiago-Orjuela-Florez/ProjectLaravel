@@ -1,6 +1,6 @@
-input,
+﻿input,
 .debug-box{
-    border:1 px dashed red;
+    border:1px dashed red;
     background: rgba(255,0,0,0.05);
 
 }
@@ -187,10 +187,35 @@ body {
     background: transparent;
 }
 
+.inventory{
+    position: absolute;
+    top: 158mm; /* Ajusta esta posición según sea necesario */
+    left: 120mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+}
+
 .item-chequeo{
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.item-chequeo_5{
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+    gap: 8px;     
+}
+
+.check-item-web {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.check-label-web {
+    margin-right: 10px;
 }
 
 .desplegable{
@@ -202,14 +227,14 @@ body {
 }
 .batches{
     position: absolute;
-    top: 212mm; /* Ajusta esta posición según sea necesario */
+    top: 204mm; /* Ajusta esta posición según sea necesario */
     left: 23mm; /* Ajusta esta posición según sea necesario */
     width: 180mm;
-    height: 20m;
+    height: 20mm;
     /* Ajusta el ancho según sea necesario */
     border: none;   
     background: transparent;
-    font-size: 12pt;
+    font-size: 16pt;
 }
 
 .btn-consultar{
@@ -240,6 +265,42 @@ body {
     color: white;
     background-color: rgb(96, 148, 211);
     font-size: 16px;
-    
-
 }
+
+.radio-group-web {
+    position: absolute;
+    top: 187mm;
+    left: 118mm;
+    gap: 40px;  
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    margin: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    font-family: sans-serif;
+}
+
+.alert-error ul {
+    margin-top: 5px;
+}
+
+.check-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.check-icon-web {
+    font-size: 15px;
+}
+
+.radio-group-web {
+    display: flex; 
+    align-items: center; 
+    gap: 90px;
+}
+

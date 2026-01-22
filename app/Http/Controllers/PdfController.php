@@ -98,7 +98,8 @@ class PdfController extends Controller
             'delivery_date' => 'required',
             'batch' => 'required',
             'quantity' => 'required',
-            'nombre_seleccionado' => 'required',
+            'sign_warehouse' => 'required',
+            'sign_inventory' => 'required',
             'batches' => 'nullable|string',
             'pallets' => 'nullable',
             'units' => 'nullable',
@@ -108,6 +109,7 @@ class PdfController extends Controller
             'best_before_date' => 'nullable',
             'inspeccion' => 'nullable|array', // Validar array de checkboxes
             'fallos' => 'nullable|array', // Nuevo array para items no cumplidos (X)
+            'radio_check' => 'nullable',
         ]);
 
         // 2. Ejecución de la consulta con Agrupamiento (GroupBy)
@@ -155,7 +157,9 @@ class PdfController extends Controller
             'batches' => $request->batches,
             'inspeccion' => $request->inspeccion, // Pasamos el array de inspección
             'fallos' => $request->fallos, // Pasamos los fallos a la vista
-            'nombre_seleccionado' => $request->nombre_seleccionado,
+            'sign_warehouse' => $request->sign_warehouse,
+            'sign_inventory' => $request->sign_inventory,
+            'radio_check' => $request->radio_check,
             'result' => $result, // Aquí viaja la suma y los datos de la DB
         ])
             ->setPaper('legal', 'portrait')

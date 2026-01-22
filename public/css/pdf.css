@@ -1,23 +1,25 @@
-@page {
+﻿@page {
     size: 216mm 356mm; /* Oficio */
     margin: 0;
 }
 html, body {
-    width: 216mm;   /* Oficio */
+    width: 216mm;
     height: 356mm;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Evita cualquier scroll o desborde calculado */
 }
 
 .hoja {
     position: relative;
-    width: 216mm;   /* Oficio */
-    height: 356mm;
+    width: 216mm;
+    height: 355mm;
     overflow: hidden;
-    margin : 0;
-    page-break-after: never;
+    margin: 0;
+    /* Forzamos a DomPDF a no romper la página aquí */
     page-break-before: never;
-
+    page-break-inside: never;
+    page-break-after: never;
 }
 
 .fondo {
@@ -34,8 +36,8 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 52mm; /* Ajusta esta posición según sea necesario */
-    left: 60mm; /* Ajusta esta posición según sea necesario */
+    top: 52mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 60mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
    
 }
 .Material_Number_PDF {
@@ -43,8 +45,8 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top:    60mm; /* Ajusta esta posición según sea necesario */
-    left: 60mm; /* Ajusta esta posición según sea necesario */
+    top:    60mm; 
+    left: 60mm; 
    
 }
 
@@ -53,8 +55,8 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 68.3mm; /* Ajusta esta posición según sea necesario */
-    left: 60mm; /* Ajusta esta posición según sea necesario */
+    top: 68.3mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 60mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
    
 }
 
@@ -63,8 +65,8 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 52mm; /* Ajusta esta posición según sea necesario */
-    left: 166mm; /* Ajusta esta posición según sea necesario */
+    top: 52mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 166mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
 }
 
 .Batch_PDF {
@@ -72,8 +74,8 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 86mm; /* Ajusta esta posición según sea necesario */
-    left: 166mm; /* Ajusta esta posición según sea necesario */
+    top: 86mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 166mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
 }
 
 .Quantity_PDF {
@@ -81,22 +83,22 @@ html, body {
     white-space: nowrap;
     line-height: 1;
     font-size: 12pt;
-    top: 77mm; /* Ajusta esta posición según sea necesario */
-    left: 166mm; /* Ajusta esta posición según sea necesario */
+    top: 78mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 166mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
 }
 
 .nombres{
     position: absolute;
-    top: 96mm; /* Ajusta esta posición según sea necesario */
-    left: 120mm; /* Ajusta esta posición según sea necesario */
-    width: 50mm; /* Ajusta el ancho según sea necesario */
+    top: 96mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    left: 120mm; /* Ajusta esta posiciÃ³n segÃºn sea necesario */
+    width: 50mm; /* Ajusta el ancho segÃºn sea necesario */
     border: none;
     background: transparent;
 }
 
 .desplegable{
     position: absolute;
-    width: 60mm; /* Ajusta el ancho según sea necesario */
+    width: 60mm; /* Ajusta el ancho segÃºn sea necesario */
     border: none;
     background: transparent;
     font-size: 16pt;
@@ -104,14 +106,14 @@ html, body {
 
 .batches_PDF {
     position: absolute;
-    top: 212mm;
-    left: 22mm;
+    top: 204mm;
+    left: 23mm;
     width: 180mm;
     border: none;
     background: transparent;
     white-space: normal;
     word-wrap: break-word;
-    font-size: 12pt;
+    font-size: 15pt;
     line-height: 1.2;
 }
 
@@ -174,6 +176,15 @@ html, body {
     left: 166mm;
     width: 30mm;
 }
+    
+.inventory{
+    position: absolute;
+    top: 158mm;
+    left: 120mm;
+    width: 50mm;
+    border: none;
+    background: transparent;
+}
 
 
 .Check_01_PDF {
@@ -213,7 +224,37 @@ html, body {
     font-family: 'DejaVu Sans', sans-serif;
 }
 
-*{
+.Check_05_PDF {
+    position: absolute;
+    top: 174mm;
+    left: 181mm;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    font-family: 'DejaVu Sans', sans-serif;
+}
 
-    page-break-inside: never;
+.radio-section {
+    position: absolute; 
+    top: 184mm; /* Ubicación base en la plantilla */
+    left: 119mm;
+    width: 60mm;
+    height: 10mm;
+}
+
+/* Coordenadas relativas al padre (radio-section) */
+.radio_check_yes_PDF, 
+.radio_check_no_PDF, 
+.radio_check_na_PDF {
+    position: absolute;
+    top: 0; /* Alineado con el top de radio-section */
+    font-size: 16pt;
+}
+
+.radio_check_yes_PDF { left: 2mm; }
+.radio_check_no_PDF  { left: 22mm; } /* Ajusta según tus círculos */
+.radio_check_na_PDF  { left: 42mm; }
+
+.font-dejavu {
+    font-family: 'DejaVu Sans', sans-serif;
 }

@@ -25,10 +25,9 @@
 
     {{-- 1. Recuadro de errores (Solo visible en la Web) --}}
     @if ($errors->any() && $modo !== 'pdf')
-        <div
-            style="background: #f8d7da; color: #721c24; padding: 15px; margin: 20px; border: 1px solid #f5c6cb; border-radius: 5px; font-family: sans-serif;">
-            <strong>¡Atención! Revisa los siguientes campos:</strong>
-            <ul style="margin-top: 5px;">
+        <div class="alert-error">
+            <strong>Attention! Check the following fields:</strong>
+            <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -119,17 +118,35 @@
 
 
 
-            {{-- Campo: Dropdown Nombres --}}
+            {{-- Campo: Sign Warehouse --}}
             <div class="nombres">
                 @if($modo === 'pdf')
-                    <span>{{ $nombre_seleccionado ?? '' }}</span>
+                    <span>{{ $sign_warehouse ?? '' }}</span>
                 @else
-                    <select name="nombre_seleccionado" class="desplegable">
+                    <select name="sign_warehouse" class="desplegable">
                         <option value="">Select Name</option>
-                        <option value="Andres Orjuela" {{ old('nombre_seleccionado') == 'Andres Orjuela' ? 'selected' : '' }}>
+                        <option value="Andres Orjuela" {{ old('sign_warehouse') == 'Andres Orjuela' ? 'selected' : '' }}>
                             Andres Orjuela</option>
-                        <option value="Santiago Orjuela" {{ old('nombre_seleccionado') == 'Santiago Orjuela' ? 'selected' : '' }}>Santiago Orjuela</option>
-                        <option value="Camila Orjuela" {{ old('nombre_seleccionado') == 'Camila Orjuela' ? 'selected' : '' }}>
+                        <option value="Santiago Orjuela" {{ old('sign_warehouse') == 'Santiago Orjuela' ? 'selected' : '' }}>
+                            Santiago Orjuela</option>
+                        <option value="Camila Orjuela" {{ old('sign_warehouse') == 'Camila Orjuela' ? 'selected' : '' }}>
+                            Camila Orjuela</option>
+                    </select>
+                @endif
+            </div>
+
+            {{-- Campo: Sign Inventory --}}
+            <div class="inventory">
+                @if($modo === 'pdf')
+                    <span>{{ $sign_inventory ?? '' }}</span>
+                @else
+                    <select name="sign_inventory" class="desplegable">
+                        <option value="">Select Name</option>
+                        <option value="Andres Orjuela" {{ old('sign_inventory') == 'Andres Orjuela' ? 'selected' : '' }}>
+                            Andres Orjuela</option>
+                        <option value="Santiago Orjuela" {{ old('sign_inventory') == 'Santiago Orjuela' ? 'selected' : '' }}>
+                            Santiago Orjuela</option>
+                        <option value="Camila Orjuela" {{ old('sign_inventory') == 'Camila Orjuela' ? 'selected' : '' }}>
                             Camila Orjuela</option>
                     </select>
                 @endif
@@ -153,29 +170,34 @@
                 <input type="number" name="quantity" class="Quantity" value="{{ old('quantity', $quantity ?? '') }}"
                     placeholder="Quantity">
             @endif
-        
+
             {{-- Campos Checkbox --}}
             @if($modo === 'pdf')
                 {{-- Validamos: Check (✓) o Fallo (X) --}}
                 @if(isset($inspeccion) && is_array($inspeccion))
                     @if(in_array('01', $inspeccion))
-                        <div class="Check_01_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                        <div class="Check_01_PDF font-dejavu">&#10003;</div>
                     @elseif(isset($fallos) && is_array($fallos) && in_array('01', $fallos)) <div class="Check_01_PDF">X</div>
                     @endif
 
                     @if(in_array('02', $inspeccion))
-                        <div class="Check_02_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                        <div class="Check_02_PDF font-dejavu">&#10003;</div>
                     @elseif(isset($fallos) && is_array($fallos) && in_array('02', $fallos)) <div class="Check_02_PDF">X</div>
                     @endif
 
                     @if(in_array('03', $inspeccion))
-                        <div class="Check_03_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                        <div class="Check_03_PDF font-dejavu">&#10003;</div>
                     @elseif(isset($fallos) && is_array($fallos) && in_array('03', $fallos)) <div class="Check_03_PDF">X</div>
                     @endif
 
                     @if(in_array('04', $inspeccion))
-                        <div class="Check_04_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                        <div class="Check_04_PDF font-dejavu">&#10003;</div>
                     @elseif(isset($fallos) && is_array($fallos) && in_array('04', $fallos)) <div class="Check_04_PDF">X</div>
+                    @endif
+
+                    @if(in_array('05', $inspeccion))
+                        <div class="Check_05_PDF font-dejavu">&#10003;</div>
+                    @elseif(isset($fallos) && is_array($fallos) && in_array('05', $fallos)) <div class="Check_05_PDF">X</div>
                     @endif
                 @elseif(isset($fallos) && is_array($fallos))
                     // Caso borde: solo hay fallos marcados y ningun check
@@ -187,47 +209,59 @@
                     <div class="Check_03_PDF">X</div> @endif
                     @if(in_array('04', $fallos))
                     <div class="Check_04_PDF">X</div> @endif
+                    @if(in_array('05', $fallos))
+                    <div class="Check_05_PDF">X</div> @endif
                 @endif
             @else
                 <div class="checkboxes">
                     <div class="item-chequeo">
-                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <span class="check-item-web">✓</span>
                         <input type="checkbox" name="inspeccion[]" value="01" id="check01">
-                        <label for="check01" style="margin-right: 10px;"></label>
+                        <label for="check01" class="check-label-web"></label>
 
-                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <span class="check-item-web">X</span>
                         <input type="checkbox" name="fallos[]" value="01" id="fail01">
                         <label for="fail01"></label>
                     </div>
 
                     <div class="item-chequeo">
-                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <span class="check-item-web">✓</span>
                         <input type="checkbox" name="inspeccion[]" value="02" id="check02">
-                        <label for="check02" style="margin-right: 10px;"></label>
+                        <label for="check02" class="check-label-web"></label>
 
-                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <span class="check-item-web">X</span>
                         <input type="checkbox" name="fallos[]" value="02" id="fail02">
                         <label for="fail02"></label>
                     </div>
 
                     <div class="item-chequeo">
-                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <span class="check-item-web">✓</span>
                         <input type="checkbox" name="inspeccion[]" value="03" id="check03">
-                        <label for="check03" style="margin-right: 10px;"></label>
+                        <label for="check03" class="check-label-web"></label>
 
-                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <span class="check-item-web">X</span>
                         <input type="checkbox" name="fallos[]" value="03" id="fail03">
                         <label for="fail03"></label>
                     </div>
 
                     <div class="item-chequeo">
-                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <span class="check-item-web">✓</span>
                         <input type="checkbox" name="inspeccion[]" value="04" id="check04">
-                        <label for="check04" style="margin-right: 10px;"></label>
+                        <label for="check04" class="check-label-web"></label>
 
-                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <span class="check-item-web">X</span>
                         <input type="checkbox" name="fallos[]" value="04" id="fail04">
                         <label for="fail04"></label>
+                    </div>
+
+                    <div class="item-chequeo_5">
+                        <span class="check-item-web">✓</span>
+                        <input type="checkbox" name="inspeccion[]" value="05" id="check05">
+                        <label for="check05" class="check-label-web"></label>
+
+                        <span class="check-item-web">X</span>
+                        <input type="checkbox" name="fallos[]" value="05" id="fail05">
+                        <label for="fail05"></label>
                     </div>
                 </div>
             @endif
@@ -241,13 +275,35 @@
                     placeholder="Extra Batches Info">
             @endif
 
+
+            {{-- Campo: Radio Check (Ultimo campo) --}}
+            @if($modo === 'pdf')
+                <div class="radio-section">
+                    @if(isset($radio_check) && $radio_check == 'yes')
+                        <div class="radio_check_yes_PDF font-dejavu">&#10003;</div>
+                    @elseif(isset($radio_check) && $radio_check == 'no')
+                        <div class="radio_check_no_PDF font-dejavu">&#10003;</div>
+                    @elseif(isset($radio_check) && $radio_check == 'na')
+                        <div class="radio_check_na_PDF font-dejavu">&#10003;</div>
+                    @endif
+                </div>
+            @else
+                <div class="radio-group-web">
+                    <input type="radio" name="radio_check" value="yes" {{ old('radio_check') == 'yes' ? 'checked' : '' }}>
+
+                    <input type="radio" name="radio_check" value="no" {{ old('radio_check') == 'no' ? 'checked' : '' }}>
+
+                    <input type="radio" name="radio_check" value="na" {{ old('radio_check') == 'na' ? 'checked' : '' }}>
+                </div>
+            @endif
+
         </div>
 
         @if($modo !== 'pdf')
-                <button type="submit" class="Descargar">Generar y Descargar PDF</button>
+                <button type="submit" class="Descargar">Generate and Download PDF</button>
                 <button type="button" id="btn_consultar" data-url="{{ route('datos.buscar') }}" data-token="{{ csrf_token() }}"
                     class="btn-consultar">
-                    Consultar Datos
+                    Consult Data
                 </button>
             </form>
         @endif
