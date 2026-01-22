@@ -21,42 +21,8 @@ This project follows the **MVC (Model-View-Controller) pattern** using the Larav
 
 ### Architectural Components
 
-```
-┌─────────────────────────────────────────────────────┐
-│                   Browser/Client                     │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│                  Routes (web.php)                    │
-│         - Form display routes                        │
-│         - PDF generation routes                      │
-│         - Product management routes                  │
-└──────────────────┬──────────────────────────────────┘
-                   │
-                   ▼
-┌─────────────────────────────────────────────────────┐
-│                   Controllers                        │
-│  ┌──────────────────┬──────────────────────────────┐│
-│  │ PlantillaController │ PdfController │ ProductoController ││
-│  └──────────────────┴──────────────────────────────┘│
-└──────────────────┬──────────────────────────────────┘
-                   │
-       ┌───────────┼───────────┐
-       ▼           ▼           ▼
-┌──────────┐  ┌─────────┐  ┌──────────┐
-│  Models  │  │  Views  │  │ Services │
-│          │  │         │  │          │
-│ Registro │  │ Blade   │  │  DomPDF  │
-│  Batch   │  │Templates│  │          │
-└──────────┘  └─────────┘  └──────────┘
-       │
-       ▼
-┌──────────────┐
-│   Database   │
-│    (MySQL)   │
-└──────────────┘
-```
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/56f41b11-3e3e-4b7c-a9b5-aba4501d873b" />
+
 
 ### Design Patterns
 
