@@ -99,7 +99,15 @@ class PdfController extends Controller
             'batch' => 'required',
             'quantity' => 'required',
             'nombre_seleccionado' => 'required',
-            'batches' => 'nullable|string', // Campo adicional para información extra de batches
+            'batches' => 'nullable|string',
+            'pallets' => 'nullable',
+            'units' => 'nullable',
+            'pallets2' => 'nullable',
+            'units2' => 'nullable',
+            'manufacturing_date' => 'nullable',
+            'best_before_date' => 'nullable',
+            'inspeccion' => 'nullable|array', // Validar array de checkboxes
+            'fallos' => 'nullable|array', // Nuevo array para items no cumplidos (X)
         ]);
 
         // 2. Ejecución de la consulta con Agrupamiento (GroupBy)
@@ -135,16 +143,24 @@ class PdfController extends Controller
             'purchase_order' => $request->purchase_order,
             'material_number' => $request->material_number,
             'ean' => $request->ean,
+            'pallets' => $request->pallets,
+            'units' => $request->units,
+            'pallets2' => $request->pallets2,
+            'units2' => $request->units2,
+            'manufacturing_date' => $request->manufacturing_date,
+            'best_before_date' => $request->best_before_date,
             'delivery_date' => $request->delivery_date,
             'batch' => $request->batch,
             'quantity' => $request->quantity,
-            'batches' => $request->batches, // Campo adicional
+            'batches' => $request->batches,
+            'inspeccion' => $request->inspeccion, // Pasamos el array de inspección
+            'fallos' => $request->fallos, // Pasamos los fallos a la vista
             'nombre_seleccionado' => $request->nombre_seleccionado,
             'result' => $result, // Aquí viaja la suma y los datos de la DB
         ])
             ->setPaper('legal', 'portrait')
             ->setOption('dpi', 72)
-            ->setOption('defaultFont', 'Verdana')
+            ->setOption('defaultFont', 'DejaVu Sans')
             ->download('formulario.pdf');
     }
 }

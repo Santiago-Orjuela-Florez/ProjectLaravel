@@ -66,11 +66,31 @@
                     value="{{ old('material_number', $material_number ?? '') }}" placeholder="Material Number">
             @endif
 
+
             {{-- Campo: EAN --}}
             @if($modo === 'pdf')
                 <div class="EAN_PDF">{{ $ean ?? '' }}</div>
             @else
                 <input type="number" name="ean" class="EAN" value="{{ old('ean', $ean ?? '') }}" placeholder="EAN">
+            @endif
+
+            {{-- Campo Pallestisation --}}
+            @if($modo === 'pdf')
+                <div class="Pallets_PDF">{{ $pallets ?? '' }}</div>
+                <div class="Units_PDF">{{ $units ?? '' }}</div>
+                <div class="Pallets2_PDF">{{ $pallets2 ?? '' }}</div>
+                <div class="Units2_PDF">{{ $units2 ?? '' }}</div>
+            @else
+                <div class="Pallestisation">
+                    <input type="number" name="pallets" class="Pallets" value="{{ old('pallets', $pallets ?? '') }}"
+                        placeholder="Pallets">
+                    <input type="number" name="units" class="Units" value="{{ old('units', $units ?? '') }}"
+                        placeholder="Units">
+                    <input type="number" name="pallets2" class="Pallets2" value="{{ old('pallets2', $pallets2 ?? '') }}"
+                        placeholder="Pallets">
+                    <input type="number" name="units2" class="Units2" value="{{ old('units2', $units2 ?? '') }}"
+                        placeholder="Units">
+                </div>
             @endif
 
             {{-- Campo: Delivery Date --}}
@@ -80,6 +100,24 @@
                 <input type="date" name="delivery_date" class="Delivery_Date"
                     value="{{ old('delivery_date', $delivery_date ?? '') }}">
             @endif
+
+            {{-- Manufacturing Date --}}
+            @if($modo === 'pdf')
+                <div class="Manufacturing_Date_PDF">{{ $manufacturing_date ?? '' }}</div>
+            @else
+                <input type="date" name="manufacturing_date" class="Manufacturing_Date"
+                    value="{{ $manufacturing_date ?? '' }}">
+            @endif
+
+
+            {{-- Best Before Date --}}
+            @if($modo === 'pdf')
+                <div class="Best_Before_Date_PDF">{{ $best_before_date ?? '' }}</div>
+            @else
+                <input type="date" name="best_before_date" class="Best_Before_Date" value="{{ $best_before_date ?? '' }}">
+            @endif
+
+
 
             {{-- Campo: Dropdown Nombres --}}
             <div class="nombres">
@@ -115,6 +153,85 @@
                 <input type="number" name="quantity" class="Quantity" value="{{ old('quantity', $quantity ?? '') }}"
                     placeholder="Quantity">
             @endif
+        
+            {{-- Campos Checkbox --}}
+            @if($modo === 'pdf')
+                {{-- Validamos: Check (✓) o Fallo (X) --}}
+                @if(isset($inspeccion) && is_array($inspeccion))
+                    @if(in_array('01', $inspeccion))
+                        <div class="Check_01_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                    @elseif(isset($fallos) && is_array($fallos) && in_array('01', $fallos)) <div class="Check_01_PDF">X</div>
+                    @endif
+
+                    @if(in_array('02', $inspeccion))
+                        <div class="Check_02_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                    @elseif(isset($fallos) && is_array($fallos) && in_array('02', $fallos)) <div class="Check_02_PDF">X</div>
+                    @endif
+
+                    @if(in_array('03', $inspeccion))
+                        <div class="Check_03_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                    @elseif(isset($fallos) && is_array($fallos) && in_array('03', $fallos)) <div class="Check_03_PDF">X</div>
+                    @endif
+
+                    @if(in_array('04', $inspeccion))
+                        <div class="Check_04_PDF" style="font-family: 'DejaVu Sans', sans-serif;">&#10003;</div>
+                    @elseif(isset($fallos) && is_array($fallos) && in_array('04', $fallos)) <div class="Check_04_PDF">X</div>
+                    @endif
+                @elseif(isset($fallos) && is_array($fallos))
+                    // Caso borde: solo hay fallos marcados y ningun check
+                    @if(in_array('01', $fallos))
+                    <div class="Check_01_PDF">X</div> @endif
+                    @if(in_array('02', $fallos))
+                    <div class="Check_02_PDF">X</div> @endif
+                    @if(in_array('03', $fallos))
+                    <div class="Check_03_PDF">X</div> @endif
+                    @if(in_array('04', $fallos))
+                    <div class="Check_04_PDF">X</div> @endif
+                @endif
+            @else
+                <div class="checkboxes">
+                    <div class="item-chequeo">
+                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <input type="checkbox" name="inspeccion[]" value="01" id="check01">
+                        <label for="check01" style="margin-right: 10px;"></label>
+
+                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <input type="checkbox" name="fallos[]" value="01" id="fail01">
+                        <label for="fail01"></label>
+                    </div>
+
+                    <div class="item-chequeo">
+                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <input type="checkbox" name="inspeccion[]" value="02" id="check02">
+                        <label for="check02" style="margin-right: 10px;"></label>
+
+                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <input type="checkbox" name="fallos[]" value="02" id="fail02">
+                        <label for="fail02"></label>
+                    </div>
+
+                    <div class="item-chequeo">
+                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <input type="checkbox" name="inspeccion[]" value="03" id="check03">
+                        <label for="check03" style="margin-right: 10px;"></label>
+
+                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <input type="checkbox" name="fallos[]" value="03" id="fail03">
+                        <label for="fail03"></label>
+                    </div>
+
+                    <div class="item-chequeo">
+                        <span style="font-size: 12px; margin-right: 5px;">✓</span>
+                        <input type="checkbox" name="inspeccion[]" value="04" id="check04">
+                        <label for="check04" style="margin-right: 10px;"></label>
+
+                        <span style="font-size: 12px; margin-right: 5px;">X</span>
+                        <input type="checkbox" name="fallos[]" value="04" id="fail04">
+                        <label for="fail04"></label>
+                    </div>
+                </div>
+            @endif
+
 
             {{-- Campo: Batches (Texto adicional) --}}
             @if($modo === 'pdf')
@@ -124,12 +241,6 @@
                     placeholder="Extra Batches Info">
             @endif
 
-            {{-- Ejemplo de dato extraído de la consulta (Opcional) --}}
-            @if($modo === 'pdf' && isset($result->material_description))
-                <div class="Descripcion_PDF" style="position:absolute; top: 200mm; left: 20mm;">
-                    {{ $result->material_description }}
-                </div>
-            @endif
         </div>
 
         @if($modo !== 'pdf')
@@ -140,7 +251,7 @@
                 </button>
             </form>
         @endif
- 
+
 </body>
 
 </html>

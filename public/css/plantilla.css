@@ -64,11 +64,81 @@ body {
 
 }
 
+.Pallestisation{
+    position: absolute;
+    top: 1mm; /* Ajusta esta posición según sea necesario */
+    left: 0mm; /* Ajusta esta posición según sea necesario */
+    width: 40mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Pallets{
+    position: absolute;
+    top: 75mm; /* Ajusta esta posición según sea necesario */
+    left: 61mm; /* Ajusta esta posición según sea necesario */
+    width: 13mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Units{
+    position: absolute;
+    top: 75mm; /* Ajusta esta posición según sea necesario */
+    left: 92mm; /* Ajusta esta posición según sea necesario */
+    width: 10mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Pallets2{
+    position: absolute;
+    top: 83mm; /* Ajusta esta posición según sea necesario */
+    left: 61mm; /* Ajusta esta posición según sea necesario */
+    width: 13mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Units2{
+    position: absolute;
+    top: 83mm; /* Ajusta esta posición según sea necesario */
+    left: 92mm; /* Ajusta esta posición según sea necesario */
+    width: 10mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
 
 
 .Delivery_Date {
     position: absolute;
     top: 51mm; /* Ajusta esta posición según sea necesario */
+    left: 165mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ancho más largo para descripción */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Manufacturing_Date {
+    position: absolute;
+    top: 60mm; /* Ajusta esta posición según sea necesario */
+    left: 165mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ancho más largo para descripción */
+    border: none;
+    background: transparent;
+    font-size: 12pt;
+}
+
+.Best_Before_Date {
+    position: absolute;
+    top: 69mm; /* Ajusta esta posición según sea necesario */
     left: 165mm; /* Ajusta esta posición según sea necesario */
     width: 30mm; /* Ancho más largo para descripción */
     border: none;
@@ -103,6 +173,24 @@ body {
     width: 30mm; /* Ajusta el ancho según sea necesario */
     border: none;
     background: transparent;
+}
+
+.checkboxes{
+    display: flex;
+    flex-direction: column; /* Alinea los elementos uno debajo de otro */
+    gap: 20px;
+    position: absolute;
+    top: 114mm; /* Ajusta esta posición según sea necesario */
+    left: 167mm; /* Ajusta esta posición según sea necesario */
+    width: 30mm; /* Ajusta el ancho según sea necesario */
+    border: none;
+    background: transparent;
+}
+
+.item-chequeo{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .desplegable{

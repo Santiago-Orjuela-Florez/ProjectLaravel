@@ -114,6 +114,105 @@ html, body {
     font-size: 12pt;
     line-height: 1.2;
 }
+
+.Pallets_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 76mm;
+    left: 66mm;
+    width: 13mm;
+}
+
+.Units_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 76mm;
+    left: 94mm;
+    width: 10mm;
+}
+
+.Pallets2_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 85mm;
+    left: 66mm;
+    width: 13mm;
+}
+
+.Units2_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 85mm;
+    left: 94mm;
+    width: 10mm;
+}
+
+.Manufacturing_Date_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 60mm;
+    left: 166mm;
+    width: 30mm;
+}
+
+.Best_Before_Date_PDF {
+    position: absolute;
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 12pt;
+    top: 69mm;
+    left: 166mm;
+    width: 30mm;
+}
+
+
+.Check_01_PDF {
+    position: absolute;
+    top: 112mm;
+    left: 181mm;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    font-family: 'DejaVu Sans', sans-serif;
+}
+.Check_02_PDF {
+    position: absolute;
+    top: 122mm;
+    left: 181mm;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    font-family: 'DejaVu Sans', sans-serif;
+}
+.Check_03_PDF {
+    position: absolute;
+    top: 134mm;
+    left: 181mm;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    font-family: 'DejaVu Sans', sans-serif;
+}
+.Check_04_PDF {
+    position: absolute;
+    top: 145mm;
+    left: 181mm;
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+    font-family: 'DejaVu Sans', sans-serif;
+}
+
 *{
 
     page-break-inside: never;
