@@ -19,37 +19,52 @@ class PdfController extends Controller
 
             // Debug: Ver qué datos llegan
             \Log::info('Buscando datos:', [
-                'material' => $request->material,
-                'documento' => $request->documento
+                'material_document' => $request->documento,
+                'material_lot' => $request->material
             ]);
 
             // Reutilizamos la lógica de tu consulta
             $totalQuantity = DB::table('registros')
                 ->join('batches', 'registros.id', '=', 'batches.registro_id')
-                ->where('registros.material', $request->material)
-                ->where('registros.material_document', $request->documento)
+                ->where('registros.material', $request->documento)
+                ->where('registros.material_document', $request->material)
                 ->sum('batches.quantity');
 
             // Obtener descripción
             $descripcion = DB::table('registros')
-                ->where('material', $request->material)
-                ->where('material_document', $request->documento)
+                ->where('material', $request->documento)
+                ->where('material_document', $request->material)
                 ->value('material_description');
 
             // Obtener lista de batches concatenados
-            $batchesIds = DB::table('registros')
+            $batchesArray = DB::table('registros')
                 ->join('batches', 'registros.id', '=', 'batches.registro_id')
-                ->where('registros.material', $request->material)
-                ->where('registros.material_document', $request->documento)
+                ->where('registros.material', $request->documento)
+                ->where('registros.material_document', $request->material)
                 ->pluck('batches.batch')
                 ->unique()
-                ->implode(', ');
+                ->values()
+                ->toArray();
+
+            // Lógica de distribución de Batches
+            $primaryBatch = '';
+            $extraBatchesList = '';
+
+            if (count($batchesArray) > 0) {
+                // El primero siempre va al campo principal
+                $primaryBatch = $batchesArray[0];
+
+                // Si hay más de uno, el resto va a la lista de extras
+                if (count($batchesArray) > 1) {
+                    $extraBatchesList = implode(', ', array_slice($batchesArray, 1));
+                }
+            }
 
             // Obtener fecha (tomamos la del primer batch encontrado)
             $fecha = DB::table('registros')
                 ->join('batches', 'registros.id', '=', 'batches.registro_id')
-                ->where('registros.material', $request->material)
-                ->where('registros.material_document', $request->documento)
+                ->where('registros.material', $request->documento)
+                ->where('registros.material_document', $request->material)
                 ->whereNotNull('batches.date')
                 ->value('batches.date');
 
@@ -58,7 +73,8 @@ class PdfController extends Controller
                 'material_document' => $request->documento,
                 'material_description' => $descripcion,
                 'total_quantity' => (int) $totalQuantity,
-                'batches_list' => $batchesIds,
+                'primary_batch' => $primaryBatch,       // Dato para el campo 'Batch'
+                'extra_batches_list' => $extraBatchesList, // Dato para el campo 'Batches' (abajo)
                 'delivery_date' => $fecha // Enviamos la fecha
             ];
 

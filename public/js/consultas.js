@@ -31,17 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Rellenar el campo quantity
                     document.getElementsByName('quantity')[0].value = data.total_quantity;
                     
-                    // Rellenar el campo batches si existe
-                    if (data.batches_list) {
-                        console.log('Asignando batches:', data.batches_list);
-                        document.getElementsByName('batches')[0].value = data.batches_list;
+                    // Rellenar el campo 'batch' (principal)
+                    if (data.primary_batch) {
+                        document.getElementsByName('batch')[0].value = data.primary_batch;
+                    }
+
+                    // Rellenar el campo 'batches' (extras)
+                    // Si viene vacío, limpiamos el campo para que no quede basura
+                    let extraBatchesInput = document.getElementsByName('batches')[0];
+                    if (data.extra_batches_list) {
+                        extraBatchesInput.value = data.extra_batches_list;
                     } else {
-                        console.warn('El campo batches_list viene vacío o nulo');
+                        extraBatchesInput.value = ''; 
                     }
 
                     // Rellenar el campo fecha si existe
                     if (data.delivery_date) {
-                        console.log('Asignando fecha:', data.delivery_date);
                         document.getElementsByName('delivery_date')[0].value = data.delivery_date;
                     }
 
