@@ -308,6 +308,12 @@
             </form>
         @endif
 
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn-cerrar-sesion">Cerrar Sesión</button>
+        </form>
+
+
 </body>
 
 </html>

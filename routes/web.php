@@ -5,18 +5,28 @@ use App\Http\Controllers\ProductoController,
     App\Http\Controllers\PlantillaController,
     App\Http\Controllers\PdfController;
     
+    
 
-Route::get('/', [PlantillaController::class, 'plantilla']);
-#pdf
-Route::post('/pdf', [PdfController::class, 'descargarPdf'])
-    ->name('formulario.pdf');
 
-Route::post('/buscar-datos', [PdfController::class, 'buscar'])->name('datos.buscar');
+Route::middleware('auth')->group(function () {
 
-#producto
-Route::get('/productos', [ProductoController::class, 'mostrar']);
-Route::get('/producto/crear', [ProductoController::class, 'create']);
-Route::post('/productos', [ProductoController::class, 'store']);
+    Route::get('/formulario', [PlantillaController::class, 'plantilla']);
+
+    #pdf
+    Route::post('/pdf', [PdfController::class, 'descargarPdf'])
+        ->name('formulario.pdf');
+
+    Route::post('/buscar-datos', [PdfController::class, 'buscar'])->name('datos.buscar');
+
+    Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+});
+
+#login
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
+    Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');
+    Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
+});
 
 
 
